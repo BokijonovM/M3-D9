@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="./back-office.css">
+    <title>Strivezon Office</title>
+  </head>
+  <body>
+    <div class="container contact-form">
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link active text-white" href="./index.html">Store</a>
+            </li>
+          </ul>
+        <div class="contact-image">
+        </div>
+        <form>
+            <h3>Insert new product</h3>
+           <div class="row ">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input id="prod_name"  type="text" name="txtName" class="form-control" placeholder="Product Name *" required value="" />
+                    </div>
+                    <div class="form-group">
+                        <input id="prod_price" type="text" name="txtEmail" class="form-control" placeholder="Product price *" required value="" />
+                    </div>
+                    <div class="form-group">
+                        <input id="prod_brand" type="text" name="txtPhone" class="form-control" placeholder="Product Brand *" required value="" />
+                    </div>
+                    <div class="form-group">
+                        <input id="prod_img" type="text" name="txtPhone" class="form-control" placeholder="Image Url *" required value="" />
+                    </div>
+                    <div class="form-group">
+                        <input id="send_btn" type="submit" name="btnSubmit" class="btnContact" value="InsertProduct" required onclick="insertProduct(event)" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <textarea id="prod_descr" name="txtMsg" class="form-control" placeholder="Product description *" required style="width: 100%; height: 200px;"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>    <script src="./back-office.js"></script>
+    <script src="./back-officce.js"></script>
+</body>
+</html>

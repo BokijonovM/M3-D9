@@ -1,0 +1,24 @@
+
+.navbar-brand{
+    font-weight: bolder;
+    font-size: 30px;
+    color: rgb(0, 197, 211);
+}
+.navbar-brand:hover{
+    font-weight: bolder;
+    color: rgb(3, 222, 238);
+}
+.nav-link{
+    color: white;
+    opacity: 0.8;
+    font-size: 20px;
+}
+.nav-link:hover{
+    color: white;
+    opacity: 1;
+}
+
+
+#main-page-img-url{
+    margin-top: 20px;
+}
