@@ -1,4 +1,3 @@
-
 .navbar-brand{
     font-weight: bolder;
     font-size: 30px;
@@ -21,4 +20,14 @@
 
 #main-page-img-url{
     margin-top: 20px;
+}
+#description{
+    overflow: hidden;
+    max-width: 15ch;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.card{
+    width: 250px;
+    
 }
