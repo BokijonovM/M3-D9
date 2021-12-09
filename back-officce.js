@@ -1,6 +1,3 @@
-let test
-
-
 function getProducts() {
     let product = {
         name: document.getElementById('prod_name').value,
@@ -36,6 +33,40 @@ async function insertProduct(e) {
         alert(`${serverData.name} added successfully`)
     } catch (e) {
         alert(e)
+    }
+
+}
+const eventId = new URLSearchParams(location.search).get("eventId")
+const url = eventId ? "https://striveschool-api.herokuapp.com/api/product/" + eventId : "https://striveschool-api.herokuapp.com/api/product/"
+const method = eventId ? "PUT" : "POST"
+
+
+window.onload = async () => {
+    console.log("URL", url)
+    console.log("METHOD", method)
+
+    const submitBtn = document.querySelector("button[type='submit']")
+
+    if (eventId) {
+        document.getElementById("subtitle").innerText = " — Edit Event"
+        const response = await fetch(url)
+        if (response.ok) {
+            const eventDetails = await response.json() // {}
+            console.log(eventDetails)
+
+            const { imageUrl, description, price, name, brand } = eventDetails
+
+            // DOM MANIP - PREFILLING THE DATA INTO EVERY FIELD
+            document.getElementById("prod_name").value = name
+            document.getElementById("description").value = description
+            document.getElementById("prod_price").value = price
+            document.getElementById("prod_brand").value = brand
+            document.getElementById("prod_img").value = imageUrl
+
+
+            submitBtn.innerText = "Edit Event"
+            submitBtn.classList.add("btn-success")
+        }
     }
 
 }

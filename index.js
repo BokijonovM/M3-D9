@@ -68,6 +68,7 @@ function generateCards(product) {
                             <span class="badge badge-warning mx-3">£ ${product.price}</span>
                         </a>
                         <div class="card-body p-0 mt-3 mx-3">
+                                
                                 <h5 class="card-title text-truncate">Name: ${product.name}</h5>
                                 <p class="card-text mb-3" id="description">Description:  ${product.description}</p>
                         </div>
@@ -75,7 +76,6 @@ function generateCards(product) {
                     <div class="d-flex justify-content-between mx-3 mb-4">
                         <a class="text-white" href="product.html?userId=${product._id}"><button type="button" class="btn btn-success mb-1">View</button></a>
                         <a class="text-white" href="bak-office.html?userId=${product._id}"><button type="button" class="btn btn-secondary mb-1">Edit</button></a>
-                        <button type="button" class="btn btn-danger mb-1">Delete</button>
                     </div>
                 </div>
             </div>
@@ -91,4 +91,6 @@ function appendCards(products) {
         sectionToInsert.insertAdjacentHTML('beforeend', `${generateCards(product)}`)
     })
 }
+
+
 

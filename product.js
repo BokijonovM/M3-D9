@@ -25,13 +25,14 @@ async function getData(userId) {
                         <span class="badge badge-warning mx-3">£ ${data.price}</span>
                     </a>
                     <div class="card-body p-0 mt-3 mx-3">
+                            <p class="card-text mb-3">Brand:  <strong>${data.brand}</strong></p>
                             <h5 class="card-title text-truncate">Name: ${data.name}</h5>
                             <p class="card-text mb-3" id="description">Description:  ${data.description}</p>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between mx-3 mb-4">
                     <a class="text-white" href="bak-office.html?userId=${data._id}"><button type="button" class="btn btn-secondary mb-1">Edit</button></a>
-                    <button type="button" class="btn btn-danger mb-1">Delete</button>
+                    <button type="button" class="btn btn-danger mb-1" onclick="handleDelete()">Delete</button>
                 </div>
             </div>
         </div>`
@@ -39,4 +40,25 @@ async function getData(userId) {
     )
 
 
+}
+
+
+
+const handleDelete = async () => {
+    const hasAccepted = confirm("Are you sure?")
+
+    if (hasAccepted) {
+        try {
+            const response = await fetch("https://striveschool-api.herokuapp.com/api/product/", {
+                method: "DELETE"
+            })
+            if (response.ok) {
+                const deletedObj = await response.json()
+                showAlert("Event " + deletedObj.name + " got deleted successfully", "success")
+                setTimeout(() => { window.location.assign("/") }, 3000)
+            }
+        } catch (err) {
+            showAlert(err)
+        }
+    }
 }
