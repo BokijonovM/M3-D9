@@ -48,7 +48,7 @@ window.onload = async () => {
     console.log("URL", url)
     console.log("METHOD", method)
 
-    const submitBtn = document.getElementById("send_btn")
+    const submitBtn = document.querySelector("button[type='submit']")
 
     if (userId) {
         document.getElementById("subtitle").innerText = "Edit Event"
@@ -60,22 +60,19 @@ window.onload = async () => {
                 }
             })
             if (response.ok) {
-                const userDetails = await response.json() // {}
+                const userDetails = await response.json()
                 console.log(userDetails)
 
                 const { imageUrl, description, price, name, brand } = userDetails
 
-                // DOM MANIP - PREFILLING THE DATA INTO EVERY FIELD
                 document.getElementById("prod_name").value = name
                 document.getElementById("prod_price").value = price
                 document.getElementById("prod_brand").value = brand
                 document.getElementById("prod_img").value = imageUrl
                 document.getElementById("prod_descr").value = description
 
-
                 submitBtn.innerText = "Edit Event"
                 submitBtn.classList.add("btn-success")
-
             }
         } catch (err) {
             showAlert(err)
