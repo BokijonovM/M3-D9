@@ -1,3 +1,6 @@
+let test
+
+
 function getProducts() {
     let product = {
         name: document.getElementById('prod_name').value,
@@ -36,37 +39,51 @@ async function insertProduct(e) {
     }
 
 }
-const eventId = new URLSearchParams(location.search).get("eventId")
-const url = eventId ? "https://striveschool-api.herokuapp.com/api/product/" + eventId : "https://striveschool-api.herokuapp.com/api/product/"
-const method = eventId ? "PUT" : "POST"
+let userId = new URLSearchParams(window.location.search).get('userId')
+const url = userId ? "https://striveschool-api.herokuapp.com/api/product/" + userId : "https://striveschool-api.herokuapp.com/api/product/"
+const method = userId ? "PUT" : "POST"
 
 
 window.onload = async () => {
     console.log("URL", url)
     console.log("METHOD", method)
 
-    const submitBtn = document.querySelector("button[type='submit']")
+    const submitBtn = document.getElementById("send_btn")
 
-    if (eventId) {
-        document.getElementById("subtitle").innerText = " — Edit Event"
-        const response = await fetch(url)
-        if (response.ok) {
-            const eventDetails = await response.json() // {}
-            console.log(eventDetails)
+    if (userId) {
+        document.getElementById("subtitle").innerText = "Edit Event"
+        try {
+            const response = await fetch(url, {
+                headers: {
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIwYjA3YTRjZmY1ZjAwMTU5MGJkYjMiLCJpYXQiOjE2Mzg5NzI4NjUsImV4cCI6MTY0MDE4MjQ2NX0.nLnmXj2cSk_s7mU43hZR2pjgHFHPydHPZLzMi8WQfsM",
+                    "Content-Type": "application/json",
+                }
+            })
+            if (response.ok) {
+                const userDetails = await response.json() // {}
+                console.log(userDetails)
 
-            const { imageUrl, description, price, name, brand } = eventDetails
+                const { imageUrl, description, price, name, brand } = userDetails
 
-            // DOM MANIP - PREFILLING THE DATA INTO EVERY FIELD
-            document.getElementById("prod_name").value = name
-            document.getElementById("description").value = description
-            document.getElementById("prod_price").value = price
-            document.getElementById("prod_brand").value = brand
-            document.getElementById("prod_img").value = imageUrl
+                // DOM MANIP - PREFILLING THE DATA INTO EVERY FIELD
+                document.getElementById("prod_name").value = name
+                document.getElementById("prod_price").value = price
+                document.getElementById("prod_brand").value = brand
+                document.getElementById("prod_img").value = imageUrl
+                document.getElementById("prod_descr").value = description
 
 
-            submitBtn.innerText = "Edit Event"
-            submitBtn.classList.add("btn-success")
+                submitBtn.innerText = "Edit Event"
+                submitBtn.classList.add("btn-success")
+
+            }
+        } catch (err) {
+            showAlert(err)
         }
+    } else {
+        document.getElementById("subtitle").innerText = "Create an Event"
+        submitBtn.innerText = "Submit Event"
+        submitBtn.classList.add("btn-primary")
     }
 
 }
